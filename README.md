@@ -13,8 +13,8 @@ I don't just write code; I engineer ecosystems. My mission is to transform compl
 ## 🛠️ Technical Arsenal
 
 - **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion.
-- **Backend**: Java (Spring Boot 3), Node.js (Express), NestJS.
-- **Infrastructure**: Supabase (PostgreSQL, Auth, Storage), Docker (Learning & Growing).
+- **Backend**: Java (Spring Boot 3), Node.js (Express).
+- **Infrastructure**: Supabase (PostgreSQL, Real-time, Auth, Storage), Docker.
 - **Interactivity**: Buraq-style glassmorphism, scroll-triggered animations, and cosmic particles.
 
 ---

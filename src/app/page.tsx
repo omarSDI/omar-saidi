@@ -7,6 +7,7 @@ import { SkillsDashboard } from "@/components/sections/skills-dashboard";
 import { Missions } from "@/components/sections/missions";
 import { Terminal } from "@/components/ui/terminal";
 import { LoadingScreen } from "@/components/ui/loading-screen";
+import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -91,6 +92,9 @@ export default function Home() {
         <section id="skills-section">
           <SkillsDashboard />
         </section>
+
+        {/* Contact Intelligence */}
+        <Contact />
 
         {/* THE FINALE: About Me / Bio */}
         <section id="about-me-finale" className="max-w-4xl mx-auto space-y-16 py-20 border-t border-white/5">

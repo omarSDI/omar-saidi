@@ -6,6 +6,18 @@ import Link from "next/link";
 import { IconRocket, IconActivity, IconCpu, IconShieldCheck } from "@tabler/icons-react";
 
 export const Missions = () => {
+    const [metrics, setMetrics] = React.useState({ inventory: 124, uptime: "99.98" });
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setMetrics(prev => ({
+                inventory: prev.inventory + (Math.random() > 0.5 ? 1 : -1),
+                uptime: (99.95 + Math.random() * 0.04).toFixed(2)
+            }));
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section id="missions" className="py-24 bg-black text-white px-4 relative">
             <div className="max-w-4xl mx-auto">
@@ -13,7 +25,7 @@ export const Missions = () => {
                     <h2 className="text-3xl md:text-5xl font-bold font-mono tracking-tighter mb-4">
                         FEATURED <span className="text-cyber-green">MISSION</span>
                     </h2>
-                    <p className="text-neutral-500 font-mono text-xs uppercase tracking-[0.3em]">System Level 01: Active Engine</p>
+                    <p className="text-neutral-500 font-mono text-xs uppercase tracking-[0.3em]">System Level 01: [ACTIVE_ENGINE]</p>
                 </div>
 
                 <motion.div
@@ -45,8 +57,8 @@ export const Missions = () => {
                                         <IconCpu className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-neutral-500 uppercase">Core Logic</p>
-                                        <p className="text-xs text-white font-mono">Next.js / Supabase</p>
+                                        <p className="text-[10px] text-neutral-500 uppercase">Engine Sync</p>
+                                        <p className="text-xs text-white font-mono">Real-time DB // Supabase</p>
                                     </div>
                                 </div>
                                 <div className="p-4 border border-white/5 bg-white/5 rounded-lg flex items-center gap-4">
@@ -54,8 +66,8 @@ export const Missions = () => {
                                         <IconShieldCheck className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-neutral-500 uppercase">Integrity</p>
-                                        <p className="text-xs text-white font-mono">Secure_Auth_v2</p>
+                                        <p className="text-[10px] text-neutral-500 uppercase">Auth Integrity</p>
+                                        <p className="text-xs text-white font-mono">Secure_Supabase_Auth</p>
                                     </div>
                                 </div>
                             </div>
@@ -64,25 +76,25 @@ export const Missions = () => {
                             <div className="flex-1 space-y-6">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3">
-                                        <h3 className="text-4xl font-bold tracking-tight">Tunis Shoes <span className="text-cyber-green text-sm">[ACTIVE_ENGINE]</span></h3>
-                                        <span className="px-2 py-0.5 bg-cyber-green/10 border border-cyber-green/30 text-cyber-green text-[10px] rounded uppercase font-mono">Lead Full Stack Developer</span>
+                                        <h3 className="text-4xl font-bold tracking-tight text-white group-hover:text-cyber-green transition-colors">Tunis Shoes</h3>
+                                        <span className="px-2 py-0.5 bg-cyber-green/10 border border-cyber-green/30 text-cyber-green text-[10px] rounded uppercase font-mono tracking-tighter">Active_V3_Engine</span>
                                     </div>
                                     <p className="text-neutral-400 leading-relaxed font-sans italic border-l-2 border-cyber-green pl-4">
-                                        "A mission-critical E-commerce ecosystem engineered for high impact. Developed using Next.js 15 (App Router) and Supabase for a seamless, high-performance architecture with real-time inventory management and secure authentication."
+                                        "A mission-critical E-commerce ecosystem engineered for high impact. Developed using Next.js 15 (App Router) and Supabase for a seamless architecture with real-time inventory management and secure authentication."
                                     </p>
 
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
                                         <div className="border border-white/5 bg-white/5 p-3 rounded">
                                             <p className="text-[8px] text-neutral-600 uppercase mb-1">UP_TIME</p>
-                                            <p className="text-xs text-cyber-green font-mono">99.9% // STABLE</p>
+                                            <p className="text-xs text-cyber-green font-mono">{metrics.uptime}%</p>
                                         </div>
                                         <div className="border border-white/5 bg-white/5 p-3 rounded">
-                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">LATENCY</p>
-                                            <p className="text-xs text-electric-blue font-mono">LOW_LATENCY</p>
+                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">INVENTORY</p>
+                                            <p className="text-xs text-electric-blue font-mono">{metrics.inventory} UNIT</p>
                                         </div>
                                         <div className="border border-white/5 bg-white/5 p-3 rounded col-span-2">
-                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">Core Features</p>
-                                            <p className="text-[10px] text-neutral-300 font-mono">Real-time Stats // Supabase Auth // Storage</p>
+                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">Real-time Stream</p>
+                                            <p className="text-[10px] text-neutral-300 font-mono italic">Supabase Edge Functions Active...</p>
                                         </div>
                                     </div>
                                 </div>
