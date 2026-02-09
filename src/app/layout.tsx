@@ -5,6 +5,8 @@ import { SpaceDust } from "@/components/ui/space-dust";
 import { Spaceship } from "@/components/ui/spaceship";
 import { SocialDock } from "@/components/ui/social-dock";
 import { MouseTrail } from "@/components/ui/mouse-trail";
+import { AudioProvider } from "@/components/ui/audio-manager";
+import { SpaceshipChase } from "@/components/ui/spaceship-chase";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,12 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="nebula-bg" />
-        <SpaceDust />
-        <MouseTrail />
-        <Spaceship />
-        <SocialDock />
-        {children}
+        <AudioProvider>
+          <div className="nebula-bg" />
+          <SpaceDust />
+          <MouseTrail />
+          <Spaceship />
+          <SpaceshipChase />
+          <SocialDock />
+          {children}
+        </AudioProvider>
       </body>
     </html>
   );

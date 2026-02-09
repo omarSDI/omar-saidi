@@ -26,6 +26,17 @@ export const Hero = () => {
                     className="relative group mb-12"
                 >
                     <div className="absolute -inset-1 bg-gradient-to-r from-cyber-green/50 to-electric-blue/50 rounded-full blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+
+                    {/* Glowing Crown Aura */}
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.05, 1],
+                            opacity: [0.2, 0.4, 0.2],
+                        }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        className="absolute -inset-4 bg-gradient-to-b from-electric-blue/30 via-transparent to-transparent rounded-full blur-2xl z-0"
+                    />
+
                     <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/10 glassmorphism shadow-2xl flex items-center justify-center bg-neutral-900 group-hover:scale-105 transition-transform duration-500">
                         {/* High-Impact Glass Overlay with Glitch Effect */}
                         <motion.div
