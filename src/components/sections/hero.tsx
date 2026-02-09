@@ -1,20 +1,10 @@
 "use client";
 import React from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export const Hero = () => {
-    const words = [
-        { text: "OMAR" },
-        { text: "SAIDI" },
-        { text: "|" },
-        { text: "BUILDING", className: "text-cyber-green" },
-        { text: "SCALABLE", className: "text-cyber-green" },
-        { text: "SOLUTIONS", className: "text-cyber-green" },
-    ];
-
     return (
         <section className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-black py-20">
             <BackgroundBeams />
@@ -77,12 +67,33 @@ export const Hero = () => {
                     <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-electric-blue/20 blur-xl animate-pulse" />
                 </motion.div>
 
-                <TypewriterEffect words={words} className="mb-6 tracking-tighter" />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="text-center mb-4 w-full"
+                >
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-mono tracking-tighter uppercase">
+                        OMAR SAIDI
+                    </h1>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="text-center mb-6 w-full"
+                >
+                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-mono tracking-tighter uppercase text-cyber-green">
+                        BUILDING SCALABLE SOLUTIONS
+                    </h2>
+                </motion.div>
+
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto font-mono uppercase tracking-[0.2em] leading-relaxed mb-10"
+                    transition={{ duration: 0.8, delay: 0.9 }}
+                    className="text-neutral-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed mb-10 text-center px-2"
                 >
                     Elite Full Stack Developer & IT Specialist. <br />
                     <span className="text-white/50">ISET Béja // Secure Archive</span>
