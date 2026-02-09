@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   description: "Portfolio of Omar Saidi, a Full Stack Developer specializing in Next.js 15, Spring Boot 3, and Supabase. Building scalable digital ecosystems with a focus on impact and modern architecture.",
   keywords: ["Omar Saidi", "Full Stack Developer", "ISET Béja", "Next.js", "Spring Boot", "Supabase", "Web Development Tunisia", "Tunis Shoes"],
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.png?v=2",
+    apple: "/logo.png?v=2",
   },
 };
 

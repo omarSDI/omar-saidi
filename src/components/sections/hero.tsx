@@ -10,7 +10,14 @@ const useTypewriter = (lines: string[], speed = 80, pauseBetween = 600) => {
     const [displayed, setDisplayed] = useState<string[]>([]);
 
     useEffect(() => {
-        if (lineIndex >= lines.length) return;
+        if (lineIndex >= lines.length) {
+            const timeout = setTimeout(() => {
+                setLineIndex(0);
+                setCharIndex(0);
+                setDisplayed([]);
+            }, 2000);
+            return () => clearTimeout(timeout);
+        }
 
         if (charIndex <= lines[lineIndex].length) {
             const timeout = setTimeout(() => {
@@ -29,7 +36,7 @@ const useTypewriter = (lines: string[], speed = 80, pauseBetween = 600) => {
         }
     }, [lineIndex, charIndex, lines, speed, pauseBetween, displayed]);
 
-    return { displayed, isDone: lineIndex >= lines.length };
+    return { displayed, isDone: false };
 };
 
 export const Hero = () => {
