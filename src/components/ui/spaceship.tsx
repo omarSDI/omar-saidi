@@ -7,13 +7,13 @@ export const Spaceship = () => {
 
     useEffect(() => {
         const triggerFlyBy = () => {
-            if (Math.random() > 0.7) { // 30% chance every check
+            if (Math.random() > 0.4) { // 60% chance every check
                 setIsVisible(true);
                 setTimeout(() => setIsVisible(false), 8000); // Duration matches animation
             }
         };
 
-        const interval = setInterval(triggerFlyBy, 30000); // Check every 30s
+        const interval = setInterval(triggerFlyBy, 10000); // Check every 10s
         return () => clearInterval(interval);
     }, []);
 
