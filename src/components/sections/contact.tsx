@@ -104,7 +104,7 @@ export const Contact = () => {
                             type="submit"
                             disabled={status === "sending"}
                             className={cn(
-                                "w-full py-4 sm:py-5 rounded font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold transition-all duration-500 shadow-[0_0_20px_rgba(0,255,65,0.1)] hover:shadow-[0_0_30px_rgba(0,255,65,0.3)] active:scale-[0.98]",
+                                "w-full py-4 sm:py-5 rounded font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold transition-all duration-500 shadow-[0_0_20px_rgba(0,255,65,0.1)] hover:shadow-[0_0_30px_rgba(0,255,65,0.3)] active:scale-[0.98] flex items-center justify-center text-center",
                                 status === "success"
                                     ? "bg-cyber-green text-black"
                                     : status === "error"
@@ -123,7 +123,7 @@ export const Contact = () => {
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-center py-3"
+                                className="w-full flex items-center justify-center text-center py-3"
                             >
                                 <span className="text-cyber-green font-mono text-[10px] sm:text-xs animate-pulse tracking-widest">
                                     /// MESSAGE TRANSMITTED SUCCESSFULLY ///
