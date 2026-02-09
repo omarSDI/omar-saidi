@@ -1,10 +1,44 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+const useTypewriter = (lines: string[], speed = 80, pauseBetween = 600) => {
+    const [lineIndex, setLineIndex] = useState(0);
+    const [charIndex, setCharIndex] = useState(0);
+    const [displayed, setDisplayed] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (lineIndex >= lines.length) return;
+
+        if (charIndex <= lines[lineIndex].length) {
+            const timeout = setTimeout(() => {
+                const current = [...displayed];
+                current[lineIndex] = lines[lineIndex].slice(0, charIndex);
+                setDisplayed(current);
+                setCharIndex(charIndex + 1);
+            }, speed);
+            return () => clearTimeout(timeout);
+        } else {
+            const timeout = setTimeout(() => {
+                setLineIndex(lineIndex + 1);
+                setCharIndex(0);
+            }, pauseBetween);
+            return () => clearTimeout(timeout);
+        }
+    }, [lineIndex, charIndex, lines, speed, pauseBetween, displayed]);
+
+    return { displayed, isDone: lineIndex >= lines.length };
+};
+
 export const Hero = () => {
+    const { displayed, isDone } = useTypewriter(
+        ["OMAR SAIDI", "BUILDING SCALABLE SOLUTIONS"],
+        70,
+        500
+    );
+
     return (
         <section className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-black py-20">
             <BackgroundBeams />
@@ -67,33 +101,31 @@ export const Hero = () => {
                     <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-electric-blue/20 blur-xl animate-pulse" />
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-center mb-4 w-full"
-                >
+                {/* Typewriter Name */}
+                <div className="text-center mb-4 w-full min-h-[3rem] sm:min-h-[3.5rem] md:min-h-[4rem]">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-mono tracking-tighter uppercase">
-                        OMAR SAIDI
+                        {displayed[0] || ""}
+                        {!isDone && displayed[1] === undefined && (
+                            <span className="inline-block w-[3px] h-[1em] bg-cyber-green ml-1 animate-pulse align-baseline" />
+                        )}
                     </h1>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="text-center mb-6 w-full"
-                >
+                {/* Typewriter Tagline */}
+                <div className="text-center mb-6 w-full min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem]">
                     <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold font-mono tracking-tighter uppercase text-cyber-green">
-                        BUILDING SCALABLE SOLUTIONS
+                        {displayed[1] || ""}
+                        {!isDone && displayed[1] !== undefined && (
+                            <span className="inline-block w-[3px] h-[1em] bg-cyber-green ml-1 animate-pulse align-baseline" />
+                        )}
                     </h2>
-                </motion.div>
+                </div>
 
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                    className="text-neutral-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed mb-10 text-center px-2"
+                    animate={isDone ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.8 }}
+                    className={`text-neutral-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] leading-relaxed mb-10 text-center px-2 ${isDone ? "" : "opacity-0"}`}
                 >
                     Elite Full Stack Developer & IT Specialist. <br />
                     <span className="text-white/50">ISET Béja // Secure Archive</span>
@@ -101,9 +133,9 @@ export const Hero = () => {
 
                 <motion.div
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.5 }}
-                    className="flex items-center gap-8"
+                    animate={isDone ? { opacity: 1 } : {}}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className={`flex items-center gap-8 ${isDone ? "" : "opacity-0"}`}
                 >
                     <div className="h-[1px] w-12 bg-white/10" />
                     <span className="text-[10px] text-neutral-600 uppercase tracking-[0.5em] font-mono">Status: Connected</span>
