@@ -110,14 +110,15 @@ export const Contact = () => {
                             type="submit"
                             disabled={status === "sending"}
                             className={cn(
-                                "w-full py-4 sm:py-5 rounded font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold transition-all duration-500 shadow-[0_0_20px_rgba(0,255,65,0.1)] hover:shadow-[0_0_30px_rgba(0,255,65,0.3)] active:scale-[0.98] flex items-center justify-center text-center",
+                                "w-full py-4 sm:py-5 rounded-xl font-mono text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold transition-all duration-500 shadow-[0_0_20px_rgba(0,255,65,0.1)] hover:shadow-[0_0_40px_rgba(0,255,65,0.4)] active:scale-[0.98] flex items-center justify-center text-center relative group overflow-hidden glassmorphism border border-white/10",
                                 status === "success"
                                     ? "bg-cyber-green text-black"
                                     : status === "error"
                                         ? "bg-red-500/20 border border-red-500/30 text-red-400"
-                                        : "bg-white/5 border border-white/10 text-white hover:bg-cyber-green hover:text-black"
+                                        : "hover:bg-cyber-green hover:text-black text-white"
                             )}
                         >
+                            <span className="absolute w-2 h-2 rounded-full bg-cyber-green/50 blur-sm group-hover:animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300 left-8" />
                             {status === "idle" && "Execute_Transmission"}
                             {status === "sending" && "Transmitting..."}
                             {status === "success" && "✓ Signal_Delivered"}

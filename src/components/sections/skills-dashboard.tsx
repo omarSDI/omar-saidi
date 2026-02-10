@@ -65,9 +65,9 @@ export const SkillsDashboard = () => {
                             { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={i} className="group relative">
-                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[160px] justify-center bg-black/40">
-                                    <span className={`text-2xl ${skill.color}`}>{skill.icon}</span>
-                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
+                                <div className="flex items-center gap-3 px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[140px] justify-center bg-black/40">
+                                    <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}
@@ -85,9 +85,9 @@ export const SkillsDashboard = () => {
                             { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={`dup-${i}`} className="group relative">
-                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[160px] justify-center bg-black/40">
-                                    <span className={`text-2xl ${skill.color}`}>{skill.icon}</span>
-                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
+                                <div className="flex items-center gap-3 px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[140px] justify-center bg-black/40">
+                                    <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}

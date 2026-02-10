@@ -8,10 +8,16 @@ import { FeaturedMission } from "@/components/sections/featured-mission";
 import { Terminal } from "@/components/ui/terminal";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { Contact } from "@/components/sections/contact";
+import { SpaceshipChase } from "@/components/ui/spaceship-chase";
+import { SpaceDust } from "@/components/ui/space-dust";
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
+      <SpaceDust />
+      <SpaceshipChase />
       <LoadingScreen />
 
       {/* High-Impact Start */}
