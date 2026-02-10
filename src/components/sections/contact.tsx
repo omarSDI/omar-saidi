@@ -30,6 +30,7 @@ export const Contact = () => {
         } catch (err: any) {
             setStatus("error");
             setError(err.message || "Transmission failed. Signal lost.");
+            console.error("Supabase Transmission Error:", err);
         }
     };
 
@@ -117,18 +118,29 @@ export const Contact = () => {
                             {status === "error" && (!supabase ? "Config_Missing" : "Transmission_Failed")}
                         </button>
 
-                        {/* Success Message */}
-                        {status === "success" && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="w-full flex items-center justify-center text-center py-3"
-                            >
-                                <span className="text-cyber-green font-mono text-[10px] sm:text-xs animate-pulse tracking-widest">
-                                    /// MESSAGE TRANSMITTED SUCCESSFULLY ///
-                                </span>
-                            </motion.div>
-                        )}
+                        {/* Error/Success Message Container */}
+                        <div className="min-h-[20px] text-center">
+                            {status === "success" && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    <span className="text-cyber-green font-mono text-[10px] sm:text-xs animate-pulse tracking-widest">
+                                        /// MESSAGE TRANSMITTED SUCCESSFULLY ///
+                                    </span>
+                                </motion.div>
+                            )}
+                            {status === "error" && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                >
+                                    <span className="text-red-500 font-mono text-[10px] sm:text-xs tracking-widest uppercase">
+                                        /// {error} ///
+                                    </span>
+                                </motion.div>
+                            )}
+                        </div>
                     </form>
                 </motion.div>
             </div>
