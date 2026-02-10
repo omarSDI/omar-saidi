@@ -66,14 +66,13 @@ export const SkillsDashboard = () => {
                             { name: "PHP", icon: "🐘", color: "text-indigo-400" },
                             { name: "Kotlin", icon: "K", color: "text-purple-400" },
                             { name: "Docker", icon: "🐳", color: "text-blue-500" },
+                            { name: "Java", icon: "☕", color: "text-red-400" },
+                            { name: "Python", icon: "🐍", color: "text-yellow-300" },
                         ].map((skill, i) => (
                             <div key={i} className="group relative">
-                                <div className="w-24 h-24 md:w-32 md:h-32 glassmorphism border border-white/5 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow">
-                                    <span className={`text-3xl md:text-4xl ${skill.color}`}>{skill.icon}</span>
-                                    {/* Glass Tooltip */}
-                                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/80 backdrop-blur-md border border-violet-500/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                                        <span className="text-[10px] font-mono text-violet-300 uppercase tracking-widest">{skill.name}</span>
-                                    </div>
+                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow min-w-[160px] justify-center bg-black/40">
+                                    <span className={`text-2xl ${skill.color} drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`}>{skill.icon}</span>
+                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors shadow-black drop-shadow-md">{skill.name}</span>
                                 </div>
                             </div>
                         ))}
@@ -91,14 +90,13 @@ export const SkillsDashboard = () => {
                             { name: "PHP", icon: "🐘", color: "text-indigo-400" },
                             { name: "Kotlin", icon: "K", color: "text-purple-400" },
                             { name: "Docker", icon: "🐳", color: "text-blue-500" },
+                            { name: "Java", icon: "☕", color: "text-red-400" },
+                            { name: "Python", icon: "🐍", color: "text-yellow-300" },
                         ].map((skill, i) => (
                             <div key={`dup-${i}`} className="group relative">
-                                <div className="w-24 h-24 md:w-32 md:h-32 glassmorphism border border-white/5 rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow">
-                                    <span className={`text-3xl md:text-4xl ${skill.color}`}>{skill.icon}</span>
-                                    {/* Glass Tooltip */}
-                                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/80 backdrop-blur-md border border-violet-500/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                                        <span className="text-[10px] font-mono text-violet-300 uppercase tracking-widest">{skill.name}</span>
-                                    </div>
+                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow min-w-[160px] justify-center bg-black/40">
+                                    <span className={`text-2xl ${skill.color} drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`}>{skill.icon}</span>
+                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors shadow-black drop-shadow-md">{skill.name}</span>
                                 </div>
                             </div>
                         ))}

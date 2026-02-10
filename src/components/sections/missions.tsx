@@ -5,6 +5,13 @@ import { cn } from "@/lib/utils";
 
 const projects = [
     {
+        title: "Tunis Shoes",
+        desc: "Next-Gen E-Commerce with Real-Time Admin Dashboard & Analytics.",
+        tech: ["Spring Boot 3", "Angular 17", "PostgreSQL", "Docker"],
+        status: "OPERATIONAL",
+        ref: "TS-ECOSYSTEM-V1"
+    },
+    {
         title: "Platforme de Troc",
         desc: "Digital exchange platform with complex swapping algorithms.",
         tech: ["Java", "Spring Boot", "Angular", "MySQL"],

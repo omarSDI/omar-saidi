@@ -11,7 +11,7 @@ import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black bg-stars selection:bg-cyber-green selection:text-black">
       <LoadingScreen />
 
       {/* High-Impact Start */}
