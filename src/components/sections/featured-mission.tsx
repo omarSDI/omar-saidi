@@ -97,14 +97,14 @@ export const FeaturedMission = () => {
 
                         {/* Actions */}
                         <div className="flex gap-4">
-                            <button className="flex-1 bg-black border border-white/10 text-white py-4 rounded-xl font-mono text-sm uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group">
+                            <a href="https://github.com/omarSDI" target="_blank" rel="noopener noreferrer" className="flex-1 bg-black border border-white/10 text-white py-4 rounded-xl font-mono text-sm uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group">
                                 <IconBrandGithub size={18} className="group-hover:text-cyber-green transition-colors" />
                                 Source Code
-                            </button>
-                            <button className="flex-1 bg-cyber-green text-black py-4 rounded-xl font-mono text-sm uppercase tracking-widest font-bold hover:bg-cyber-green/90 transition-all shadow-[0_0_20px_rgba(0,255,65,0.3)] hover:shadow-[0_0_30px_rgba(0,255,65,0.5)] flex items-center justify-center gap-2">
+                            </a>
+                            <a href="https://omarsaidi.dev" target="_blank" rel="noopener noreferrer" className="flex-1 bg-cyber-green text-black py-4 rounded-xl font-mono text-sm uppercase tracking-widest font-bold hover:bg-cyber-green/90 transition-all shadow-[0_0_20px_rgba(0,255,65,0.3)] hover:shadow-[0_0_30px_rgba(0,255,65,0.5)] flex items-center justify-center gap-2">
                                 <IconExternalLink size={18} />
                                 Live Demo
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
