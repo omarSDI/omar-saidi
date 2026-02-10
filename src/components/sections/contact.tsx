@@ -7,8 +7,7 @@ import { SupernovaTransition } from "@/components/ui/supernova-transition";
 
 export const Contact = () => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
     const [showSupernova, setShowSupernova] = useState(false);
     const [error, setError] = useState("");
 
@@ -18,7 +17,7 @@ export const Contact = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
+        setStatus("sending");
         setError("");
 
         try {
@@ -28,14 +27,13 @@ export const Contact = () => {
 
             if (supabaseError) throw supabaseError;
 
-            setIsSuccess(true);
+            setStatus("success");
             setShowSupernova(true);
             setFormData({ name: "", email: "", message: "" });
 
         } catch (err: any) {
+            setStatus("error");
             setError(err.message || "Transmission failed. Signal lost.");
-        } finally {
-            setIsSubmitting(false);
         }
     };
 

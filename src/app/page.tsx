@@ -10,12 +10,16 @@ import { LoadingScreen } from "@/components/ui/loading-screen";
 import { Contact } from "@/components/sections/contact";
 import { SpaceshipChase } from "@/components/ui/spaceship-chase";
 import { SpaceDust } from "@/components/ui/space-dust";
+import { Starfield3D } from "@/components/ui/starfield-3d";
+import { MouseTrail } from "@/components/ui/mouse-trail";
 
 export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
+      <Starfield3D />
+      <MouseTrail />
       <SpaceDust />
       <SpaceshipChase />
       <LoadingScreen />

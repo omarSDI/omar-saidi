@@ -30,7 +30,10 @@ export const FeaturedMission = () => {
                             </div>
                             <div>
                                 <div className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">LIVE STATUS</div>
-                                <div className="text-sm font-mono text-cyber-green font-bold settings-shadow">SYSTEM_ACTIVE</div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-cyber-green animate-pulse shadow-[0_0_8px_rgba(0,255,65,0.8)]" />
+                                    <div className="text-sm font-mono text-cyber-green font-bold settings-shadow uppercase">SYSTEM_ACTIVE</div>
+                                </div>
                             </div>
                         </div>
 
@@ -41,7 +44,10 @@ export const FeaturedMission = () => {
                             </div>
                             <div>
                                 <div className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">ENGINE SYNC</div>
-                                <div className="text-sm font-mono text-white font-bold">Real-time DB // Supabase</div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-electric-blue animate-pulse delay-75 shadow-[0_0_8px_rgba(0,180,255,0.8)]" />
+                                    <div className="text-sm font-mono text-white font-bold uppercase tracking-tight">Real-time DB // Supabase</div>
+                                </div>
                             </div>
                         </div>
 
@@ -52,7 +58,10 @@ export const FeaturedMission = () => {
                             </div>
                             <div>
                                 <div className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">AUTH INTEGRITY</div>
-                                <div className="text-sm font-mono text-white font-bold">Secure_Supabase_Auth</div>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse delay-150 shadow-[0_0_8px_rgba(234,179,8,0.8)]" />
+                                    <div className="text-sm font-mono text-white font-bold uppercase tracking-tight">Secure_Supabase_Auth</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -81,14 +90,14 @@ export const FeaturedMission = () => {
                                 </div>
                                 <div className="col-span-2 md:col-span-1 bg-neutral-900/30 border border-white/5 p-4 rounded-lg">
                                     <div className="text-[9px] text-neutral-600 uppercase tracking-widest mb-1">REAL-TIME STREAM</div>
-                                    <div className="text-xs font-mono text-neutral-300 animate-pulse">Supabase Edge Functions Active...</div>
+                                    <div className="text-xs font-mono text-neutral-300 animate-pulse tracking-tight">Supabase Edge Functions Active...</div>
                                 </div>
                             </div>
 
                             {/* Tech Stack */}
                             <div className="flex flex-wrap gap-2 mb-10">
                                 {["Next.js 15", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"].map((tech) => (
-                                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-neutral-400 text-xs font-mono rounded hover:bg-white/10 transition-colors cursor-default">
+                                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-neutral-400 text-xs font-mono rounded hover:bg-white/10 transition-colors cursor-default uppercase">
                                         {tech}
                                     </span>
                                 ))}
@@ -97,7 +106,7 @@ export const FeaturedMission = () => {
 
                         {/* Actions */}
                         <div className="flex gap-4">
-                            <a href="https://github.com/omarSDI" target="_blank" rel="noopener noreferrer" className="flex-1 bg-black border border-white/10 text-white py-4 rounded-xl font-mono text-sm uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group">
+                            <a href="https://github.com/omarSDI/TunisShoesRepo" target="_blank" rel="noopener noreferrer" className="flex-1 bg-black border border-white/10 text-white py-4 rounded-xl font-mono text-sm uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center justify-center gap-2 group">
                                 <IconBrandGithub size={18} className="group-hover:text-cyber-green transition-colors" />
                                 Source Code
                             </a>
