@@ -17,10 +17,6 @@ export default function Home() {
       <Hero />
 
       <div className="max-w-7xl mx-auto space-y-32 pb-40 pt-10 px-4">
-        {/* Missions first in the new order */}
-        <section id="missions-section">
-          <Missions />
-        </section>
 
         {/* INTEGRATED ARCHIVE VAULT */}
         <section id="archive-vault" className="max-w-4xl mx-auto px-4">
