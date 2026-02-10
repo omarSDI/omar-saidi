@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SocialDock } from "@/components/ui/social-dock";
+import { AudioProvider } from "@/components/ui/audio-manager";
 
 export const dynamic = 'force-dynamic';
 
@@ -60,8 +61,10 @@ export default function RootLayout({
           }}
         />
         <div className="nebula-bg" />
-        <SocialDock />
-        {children}
+        <AudioProvider>
+          <SocialDock />
+          {children}
+        </AudioProvider>
       </body>
     </html>
   );
