@@ -3,41 +3,47 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
+import { SupernovaTransition } from "@/components/ui/supernova-transition";
 
 export const Contact = () => {
-    const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [showSupernova, setShowSupernova] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        setError("");
 
-        if (!supabase) {
-            console.warn("Supabase not configured. Please set credentials in .env.local");
-            setStatus("error");
-            setTimeout(() => setStatus("idle"), 4000);
-            return;
-        }
+        try {
+            const { error: supabaseError } = await supabase
+                .from("contacts")
+                .insert([{ ...formData, created_at: new Date().toISOString() }]);
 
-        setStatus("sending");
+            if (supabaseError) throw supabaseError;
 
-        const { error } = await supabase
-            .from('messages')
-            .insert([formData]);
-
-        if (error) {
-            console.error("Submission Error:", error);
-            setStatus("error");
-            setTimeout(() => setStatus("idle"), 3000);
-        } else {
-            setStatus("success");
+            setIsSuccess(true);
+            setShowSupernova(true);
             setFormData({ name: "", email: "", message: "" });
-            setTimeout(() => setStatus("idle"), 5000);
+
+        } catch (err: any) {
+            setError(err.message || "Transmission failed. Signal lost.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
     return (
         <section id="contact" className="py-24 px-4 relative">
-            <div className="max-w-4xl mx-auto">
+            <SupernovaTransition isActive={showSupernova} onComplete={() => setShowSupernova(false)} />
+
+            <div className="max-w-3xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

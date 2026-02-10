@@ -1,133 +1,119 @@
 "use client";
 import React from "react";
-import { Button } from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { IconRocket, IconActivity, IconCpu, IconShieldCheck } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
+
+const projects = [
+    {
+        title: "Platforme de Troc",
+        desc: "Digital exchange platform with complex swapping algorithms.",
+        tech: ["Java", "Spring Boot", "Angular", "MySQL"],
+        status: "OPERATIONAL",
+        ref: "EXCHANGE-01"
+    },
+    {
+        title: "Tourisme Tunisie",
+        desc: "Site localization & travel cost estimation engine.",
+        tech: ["Java", "MySQL", "JSP"],
+        status: "ARCHIVED",
+        ref: "TRAVEL-SYS"
+    },
+    {
+        title: "Stock Management (Lilas)",
+        desc: "Retail inventory modeling & supply chain analysis.",
+        tech: ["HTML", "JS", "MySQL"],
+        status: "MAINTENANCE",
+        ref: "LILAS-STOCK"
+    }
+];
 
 export const Missions = () => {
-    const [metrics, setMetrics] = React.useState({ inventory: 124, uptime: "99.98" });
-
-    React.useEffect(() => {
-        const interval = setInterval(() => {
-            setMetrics(prev => ({
-                inventory: prev.inventory + (Math.random() > 0.5 ? 1 : -1),
-                uptime: (99.95 + Math.random() * 0.04).toFixed(2)
-            }));
-        }, 3000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <section id="missions" className="py-24 bg-black text-white px-4 relative">
-            <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold font-mono tracking-tighter mb-4">
-                        FEATURED <span className="text-cyber-green">MISSION</span>
+        <section className="max-w-6xl mx-auto px-4 py-20">
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="mb-12 flex items-end justify-between border-b border-white/10 pb-4"
+            >
+                <div>
+                    <h2 className="text-3xl md:text-5xl font-bold font-mono tracking-tighter uppercase">
+                        COMMAND <span className="text-cyber-green">CENTER</span>
                     </h2>
-                    <p className="text-neutral-500 font-mono text-xs uppercase tracking-[0.3em]">System Level 01: [ACTIVE_ENGINE]</p>
+                    <p className="text-[10px] text-neutral-500 uppercase tracking-[0.5em] mt-2">
+                        Deployed_Missions_Log
+                    </p>
                 </div>
+                <div className="hidden md:flex items-center gap-2 text-xs font-mono text-cyber-green">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-green opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-green"></span>
+                    </span>
+                    SYSTEMS_NOMINAL
+                </div>
+            </motion.div>
 
-                <motion.div
-                    whileHover={{ y: -5 }}
-                    className="w-full"
-                >
-                    <Button
-                        borderRadius="0.5rem"
-                        className="bg-[#0a0a0a]/80 backdrop-blur-md border-white/5 p-8 text-left items-stretch flex-col gap-6 fire-spray shadow-2xl"
-                        containerClassName="h-auto w-full min-h-[400px]"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {projects.map((project, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        whileHover={{
+                            scale: 1.02,
+                            rotateX: 5,
+                            rotateY: 5,
+                            transition: { duration: 0.2 }
+                        }}
+                        transition={{ delay: i * 0.1 }}
+                        viewport={{ once: true }}
+                        className="group relative bg-black/40 backdrop-blur-md border border-white/10 overflow-hidden hover:border-cyber-green/50 transition-colors duration-500 rounded-sm transform-preserve-3d perspective-1000"
                     >
-                        <div className="flex flex-col md:flex-row gap-10 items-center">
-                            {/* Visual Engine Representation */}
-                            <div className="w-full md:w-1/3 flex flex-col gap-4">
-                                <div className="p-4 border border-white/5 bg-white/5 rounded-lg flex items-center gap-4">
-                                    <div className="p-2 rounded bg-cyber-green/10 text-cyber-green">
-                                        <IconActivity className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-neutral-500 uppercase flex items-center gap-2">
-                                            Live Status
-                                            <span className="w-1.5 h-1.5 rounded-full bg-cyber-green animate-ping" />
-                                        </p>
-                                        <p className="text-xs text-cyber-green font-mono animate-pulse">SYSTEM_ACTIVE</p>
-                                    </div>
-                                </div>
-                                <div className="p-4 border border-white/5 bg-white/5 rounded-lg flex items-center gap-4">
-                                    <div className="p-2 rounded bg-electric-blue/10 text-electric-blue">
-                                        <IconCpu className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-neutral-500 uppercase">Engine Sync</p>
-                                        <p className="text-xs text-white font-mono">Real-time DB // Supabase</p>
-                                    </div>
-                                </div>
-                                <div className="p-4 border border-white/5 bg-white/5 rounded-lg flex items-center gap-4">
-                                    <div className="p-2 rounded bg-yellow-500/10 text-yellow-500">
-                                        <IconShieldCheck className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-neutral-500 uppercase">Auth Integrity</p>
-                                        <p className="text-xs text-white font-mono">Secure_Supabase_Auth</p>
-                                    </div>
+                        {/* Scanning Line Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyber-green/5 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+                        <div className="p-6 relative z-10">
+                            <div className="flex justify-between items-start mb-4">
+                                <span className="text-[9px] font-mono text-neutral-500 tracking-widest border border-white/10 px-2 py-0.5 rounded">
+                                    {project.ref}
+                                </span>
+                                <div className={cn(
+                                    "text-[9px] font-mono font-bold px-2 py-0.5 rounded flex items-center gap-1.5",
+                                    project.status === "OPERATIONAL" ? "text-cyber-green bg-cyber-green/10" :
+                                        project.status === "MAINTENANCE" ? "text-yellow-500 bg-yellow-500/10" :
+                                            "text-neutral-500 bg-neutral-800"
+                                )}>
+                                    <div className={cn(
+                                        "w-1 h-1 rounded-full",
+                                        project.status === "OPERATIONAL" ? "bg-cyber-green animate-pulse" :
+                                            project.status === "MAINTENANCE" ? "bg-yellow-500" :
+                                                "bg-neutral-500"
+                                    )} />
+                                    {project.status}
                                 </div>
                             </div>
 
-                            {/* Project Content */}
-                            <div className="flex-1 space-y-6">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-3">
-                                        <h3 className="text-4xl font-bold tracking-tight text-white group-hover:text-cyber-green transition-colors">Tunis Shoes</h3>
-                                        <span className="px-2 py-0.5 bg-cyber-green/10 border border-cyber-green/30 text-cyber-green text-[10px] rounded uppercase font-mono tracking-tighter">Active_V3_Engine</span>
-                                    </div>
-                                    <p className="text-neutral-400 leading-relaxed font-sans italic border-l-2 border-cyber-green pl-4">
-                                        "A mission-critical E-commerce ecosystem engineered for high impact. Developed using Next.js 15 (App Router) and Supabase for a seamless architecture with real-time inventory management and secure authentication."
-                                    </p>
+                            <h3 className="text-xl font-bold font-mono uppercase text-white mb-2 group-hover:text-cyber-green transition-colors">
+                                {project.title}
+                            </h3>
+                            <p className="text-sm text-neutral-400 mb-6 leading-relaxed font-sans">
+                                {project.desc}
+                            </p>
 
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
-                                        <div className="border border-white/5 bg-white/5 p-3 rounded">
-                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">UP_TIME</p>
-                                            <p className="text-xs text-cyber-green font-mono">{metrics.uptime}%</p>
-                                        </div>
-                                        <div className="border border-white/5 bg-white/5 p-3 rounded">
-                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">INVENTORY</p>
-                                            <p className="text-xs text-electric-blue font-mono">{metrics.inventory} UNIT</p>
-                                        </div>
-                                        <div className="border border-white/5 bg-white/5 p-3 rounded col-span-2">
-                                            <p className="text-[8px] text-neutral-600 uppercase mb-1">Real-time Stream</p>
-                                            <p className="text-[10px] text-neutral-300 font-mono italic">Supabase Edge Functions Active...</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-wrap gap-2">
-                                    {["Next.js 15", "TypeScript", "Supabase", "Tailwind CSS", "Framer Motion"].map(tag => (
-                                        <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-neutral-300 font-mono">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <div className="flex gap-4 pt-4">
-                                    <a
-                                        href="https://github.com/omarSDI"
-                                        target="_blank"
-                                        className="flex-1 py-3 text-center border border-white/10 text-xs uppercase tracking-widest hover:bg-white/5 transition-colors font-mono"
-                                    >
-                                        Source Code
-                                    </a>
-                                    <a
-                                        href="https://tunis-shoes-admin.vercel.app/"
-                                        target="_blank"
-                                        className="flex-1 py-3 text-center bg-cyber-green text-black text-xs uppercase font-bold tracking-widest hover:opacity-90 transition-opacity font-mono shadow-[0_0_20px_#00ff41]"
-                                    >
-                                        Live Demo
-                                    </a>
-                                </div>
+                            <div className="flex flex-wrap gap-2">
+                                {project.tech.map((t) => (
+                                    <span key={t} className="text-[10px] font-mono text-cyber-green border border-cyber-green/20 px-2 py-1 bg-cyber-green/5">
+                                        {t}
+                                    </span>
+                                ))}
                             </div>
                         </div>
-                    </Button>
-                </motion.div>
 
+                        {/* Corner Accents */}
+                        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyber-green opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-cyber-green opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </motion.div>
+                ))}
             </div>
         </section>
     );

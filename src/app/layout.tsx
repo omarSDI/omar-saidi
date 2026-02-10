@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SpaceDust } from "@/components/ui/space-dust";
+import { Starfield3D } from "@/components/ui/starfield-3d";
+import { CosmicProvider } from "@/providers/cosmic-provider";
 import { Spaceship } from "@/components/ui/spaceship";
 import { SocialDock } from "@/components/ui/social-dock";
 import { MouseTrail } from "@/components/ui/mouse-trail";
@@ -33,12 +34,41 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="nebula-bg" />
-        <SpaceDust />
-        <MouseTrail />
-        <Spaceship />
-        <SocialDock />
-        {children}
+        <CosmicProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Omar Saidi",
+                url: "https://omarsaidi.dev", // Assuming this will be the domain or similar
+                image: "https://omarsaidi.dev/assets/omar.jpg",
+                jobTitle: "Full Stack Developer",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Freelance / ISET Béja"
+                },
+                sameAs: [
+                  "https://github.com/omarSDI",
+                  "https://linkedin.com/in/omarsaidi"
+                ],
+                description: "Full Stack Developer specializing in Next.js, Spring Boot, and Scalable Solutions.",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Béja",
+                  addressCountry: "TN"
+                }
+              })
+            }}
+          />
+          <div className="nebula-bg" />
+          <Starfield3D />
+          <MouseTrail />
+          <Spaceship />
+          <SocialDock />
+          {children}
+        </CosmicProvider>
       </body>
     </html>
   );

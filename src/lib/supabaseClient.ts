@@ -1,22 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
-// Check if URL is valid to prevent crash during module evaluation
-const isValidUrl = (url: string) => {
-    try {
-        new URL(url);
-        return url.startsWith('http');
-    } catch {
-        return false;
-    }
-};
+// Safe initialization that won't crash the build if env vars are missing
+export const supabase = (supabaseUrl && supabaseKey && supabaseUrl.startsWith('http'))
+    ? createClient(supabaseUrl, supabaseKey)
+    : null as any;
 
-export const supabase = isValidUrl(supabaseUrl) && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey)
-    : (null as any);
-
-if (!supabase) {
-    console.warn("Supabase is not configured. Direct database features (like the contact form) will be disabled until NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set in .env.local");
+if (!supabase && typeof window !== 'undefined') {
+    console.warn("Supabase is not configured. Features depending on backend will be disabled.");
 }

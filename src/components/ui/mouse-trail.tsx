@@ -1,56 +1,72 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useCosmicTheme } from "@/providers/cosmic-provider";
 
-const Particle = ({ delay, mouseX, mouseY }: { delay: number, mouseX: any, mouseY: any }) => {
-    const x = useSpring(mouseX, { damping: 30 + delay * 5, stiffness: 400 - delay * 50 });
-    const y = useSpring(mouseY, { damping: 30 + delay * 5, stiffness: 400 - delay * 50 });
-
-    return (
-        <motion.div
-            style={{ x, y }}
-            className="w-1 h-1 rounded-full bg-cyber-green/20 blur-[1px] absolute -translate-x-1/2 -translate-y-1/2"
-        />
-    );
-};
+interface TrailPoint {
+    id: number;
+    x: number;
+    y: number;
+}
 
 export const MouseTrail = () => {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    const springConfig = { damping: 25, stiffness: 700 };
-    const mainX = useSpring(mouseX, springConfig);
-    const mainY = useSpring(mouseY, springConfig);
-
-    const secondaryX = useSpring(mouseX, { damping: 40, stiffness: 500 });
-    const secondaryY = useSpring(mouseY, { damping: 40, stiffness: 500 });
+    const { mode } = useCosmicTheme();
+    const [trail, setTrail] = useState<TrailPoint[]>([]);
+    const requestRef = useRef<number>(null);
+    const timerRef = useRef<NodeJS.Timeout>(null);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY);
+            setTrail((prev) => [
+                ...prev.slice(-15), // Keep last 15 points
+                { id: Date.now(), x: e.clientX, y: e.clientY }
+            ]);
         };
 
         window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [mouseX, mouseY]);
+
+        // Cleanup old points periodically
+        const interval = setInterval(() => {
+            setTrail((prev) => prev.filter(p => Date.now() - p.id < 500));
+        }, 100);
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            clearInterval(interval);
+        };
+    }, []);
+
+    // Color based on theme
+    const trailColor = mode === "matrix" ? "bg-[#00ff41]" : mode === "sith" ? "bg-red-500" : "bg-electric-blue";
 
     return (
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+            <AnimatePresence>
+                {trail.map((point, index) => (
+                    <motion.div
+                        key={point.id}
+                        initial={{ opacity: 0.8, scale: 1 }}
+                        animate={{ opacity: 0, scale: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className={`absolute w-1.5 h-1.5 rounded-full blur-[1px] ${trailColor}`}
+                        style={{
+                            left: point.x,
+                            top: point.y,
+                            transform: "translate(-50%, -50%)"
+                        }}
+                    />
+                ))}
+            </AnimatePresence>
+
+            {/* Main Cursor Glow */}
             <motion.div
-                style={{ x: mainX, y: mainY }}
-                className="w-4 h-4 rounded-full bg-electric-blue/30 blur-md absolute -translate-x-1/2 -translate-y-1/2"
-            />
-            {/* Space Dust Particles */}
-            {[...Array(6)].map((_, i) => (
-                <Particle key={i} delay={i} mouseX={mouseX} mouseY={mouseY} />
-            ))}
-            <motion.div
-                style={{
-                    x: secondaryX,
-                    y: secondaryY
+                className={`w-6 h-6 rounded-full blur-md absolute -translate-x-1/2 -translate-y-1/2 hidden md:block ${trailColor} opacity-40`}
+                animate={{
+                    x: trail[trail.length - 1]?.x || 0,
+                    y: trail[trail.length - 1]?.y || 0
                 }}
-                className="w-2 h-2 rounded-full bg-cyber-green/40 blur-sm absolute -translate-x-1/2 -translate-y-1/2"
+                transition={{ type: "spring", stiffness: 500, damping: 28 }}
             />
         </div>
     );
