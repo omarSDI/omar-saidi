@@ -151,7 +151,7 @@ export const Terminal = () => {
             </div>
             <div
                 ref={scrollRef}
-                className="bg-black/95 p-6 h-[400px] overflow-y-auto border border-white/5 rounded-b-lg scrollbar-hide glassmorphism"
+                className="bg-black/95 p-6 h-[300px] sm:h-[400px] overflow-y-auto border border-white/5 rounded-b-lg scrollbar-hide glassmorphism"
             >
                 <div className="space-y-2">
                     {history.map((line, i) => (

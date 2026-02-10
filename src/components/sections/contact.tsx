@@ -3,12 +3,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabaseClient";
 import { cn } from "@/lib/utils";
-import { SupernovaTransition } from "@/components/ui/supernova-transition";
-
 export const Contact = () => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-    const [showSupernova, setShowSupernova] = useState(false);
     const [error, setError] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,7 +25,6 @@ export const Contact = () => {
             if (supabaseError) throw supabaseError;
 
             setStatus("success");
-            setShowSupernova(true);
             setFormData({ name: "", email: "", message: "" });
 
         } catch (err: any) {
@@ -39,8 +35,6 @@ export const Contact = () => {
 
     return (
         <section id="contact" className="py-24 px-4 relative">
-            <SupernovaTransition isActive={showSupernova} onComplete={() => setShowSupernova(false)} />
-
             <div className="max-w-3xl mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

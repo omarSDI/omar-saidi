@@ -16,7 +16,7 @@ export const SocialDock = () => {
             <motion.div
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="flex items-center gap-4 bg-black/40 backdrop-blur-xl border border-white/10 p-2 px-6 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
+                className="flex items-center gap-2 sm:gap-4 bg-black/40 backdrop-blur-xl border border-white/10 p-1.5 sm:p-2 px-4 sm:px-6 rounded-full shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
             >
                 {SOCIALS.map((social, idx) => (
                     <motion.a

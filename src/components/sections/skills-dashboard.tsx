@@ -50,12 +50,12 @@ export const SkillsDashboard = () => {
                     THE <span className="text-violet-500">ARSENAL</span>
                 </h2>
 
-                <div className="relative flex flex-col items-center justify-center overflow-hidden">
+                <div className="relative flex flex-col items-center justify-center overflow-hidden mb-16">
                     {/* Gradient Fade Overlays */}
-                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-                    <div className="flex gap-8 animate-scroll-left hover:[animation-play-state:paused] w-max py-4">
+                    <div className="flex gap-4 sm:gap-8 animate-scroll-left hover:[animation-play-state:paused] w-max py-4">
                         {[
                             { name: "React", icon: "⚛️", color: "text-blue-400" },
                             { name: "Angular", icon: "🅰️", color: "text-red-500" },
@@ -69,9 +69,9 @@ export const SkillsDashboard = () => {
                             { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={i} className="group relative">
-                                <div className="flex items-center gap-3 px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[140px] justify-center bg-black/40">
-                                    <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
-                                    <span className="text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
+                                <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[120px] sm:min-w-[140px] justify-center bg-black/40">
+                                    <span className={`text-lg sm:text-xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-[8px] sm:text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}
@@ -89,14 +89,27 @@ export const SkillsDashboard = () => {
                             { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={`dup-${i}`} className="group relative">
-                                <div className="flex items-center gap-3 px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[140px] justify-center bg-black/40">
-                                    <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
-                                    <span className="text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
+                                <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-2 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[120px] sm:min-w-[140px] justify-center bg-black/40">
+                                    <span className={`text-lg sm:text-xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-[8px] sm:text-[10px] font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                <BentoGrid className="max-w-4xl mx-auto">
+                    {items.map((item, i) => (
+                        <BentoGridItem
+                            key={i}
+                            title={item.title}
+                            description={item.description}
+                            header={item.header}
+                            icon={item.icon}
+                            className={item.className}
+                        />
+                    ))}
+                </BentoGrid>
             </div>
         </div>
     );

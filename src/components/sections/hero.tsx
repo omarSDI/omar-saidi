@@ -8,14 +8,17 @@ const useTypewriter = (lines: string[], speed = 80, pauseBetween = 600) => {
     const [lineIndex, setLineIndex] = useState(0);
     const [charIndex, setCharIndex] = useState(0);
     const [displayed, setDisplayed] = useState<string[]>([]);
+    const [isDone, setIsDone] = useState(false);
 
     useEffect(() => {
         if (lineIndex >= lines.length) {
+            setIsDone(true);
             const timeout = setTimeout(() => {
                 setLineIndex(0);
                 setCharIndex(0);
                 setDisplayed([]);
-            }, 2000);
+                setIsDone(false);
+            }, 5000); // Wait longer before restart
             return () => clearTimeout(timeout);
         }
 
@@ -36,7 +39,7 @@ const useTypewriter = (lines: string[], speed = 80, pauseBetween = 600) => {
         }
     }, [lineIndex, charIndex, lines, speed, pauseBetween, displayed]);
 
-    return { displayed, isDone: false };
+    return { displayed, isDone };
 };
 
 export const Hero = () => {
