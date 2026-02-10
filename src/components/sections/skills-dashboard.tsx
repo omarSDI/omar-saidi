@@ -47,56 +47,47 @@ export const SkillsDashboard = () => {
         <div className="py-20 px-4 bg-black relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 font-mono tracking-tighter">
-                    THE <span className="text-cyber-green">ARSENAL</span>
+                    THE <span className="text-violet-500">ARSENAL</span>
                 </h2>
 
                 <div className="relative flex flex-col items-center justify-center overflow-hidden">
-                    {/* Infinite Scroll Rows */}
                     <div className="flex gap-8 animate-scroll-left hover:[animation-play-state:paused] w-max py-4">
                         {[
                             { name: "React", icon: "⚛️", color: "text-blue-400" },
                             { name: "Angular", icon: "🅰️", color: "text-red-500" },
-                            { name: "Next.js", icon: "▲", color: "text-white" },
                             { name: "Flutter", icon: "🦋", color: "text-cyan-400" },
-                            { name: "TypeScript", icon: "ts", color: "text-blue-500" },
-                            { name: "Spring Boot", icon: "🍃", color: "text-green-500" },
-                            { name: "Supabase", icon: "⚡", color: "text-emerald-400" },
-                            { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
-                            { name: "MongoDB", icon: "🍃", color: "text-green-400" },
                             { name: "PHP", icon: "🐘", color: "text-indigo-400" },
                             { name: "Kotlin", icon: "K", color: "text-purple-400" },
-                            { name: "Docker", icon: "🐳", color: "text-blue-500" },
+                            { name: "JavaScript", icon: "JS", color: "text-yellow-400" },
+                            { name: "TypeScript", icon: "TS", color: "text-blue-500" },
                             { name: "Java", icon: "☕", color: "text-red-400" },
-                            { name: "Python", icon: "🐍", color: "text-yellow-300" },
+                            { name: "Spring Boot", icon: "🍃", color: "text-green-500" },
+                            { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={i} className="group relative">
-                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow min-w-[160px] justify-center bg-black/40">
-                                    <span className={`text-2xl ${skill.color} drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`}>{skill.icon}</span>
-                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors shadow-black drop-shadow-md">{skill.name}</span>
+                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[160px] justify-center bg-black/40">
+                                    <span className={`text-2xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}
-                        {/* Duplicate for seamless loop */}
+                        {/* Duplicate for Loop */}
                         {[
                             { name: "React", icon: "⚛️", color: "text-blue-400" },
                             { name: "Angular", icon: "🅰️", color: "text-red-500" },
-                            { name: "Next.js", icon: "▲", color: "text-white" },
                             { name: "Flutter", icon: "🦋", color: "text-cyan-400" },
-                            { name: "TypeScript", icon: "ts", color: "text-blue-500" },
-                            { name: "Spring Boot", icon: "🍃", color: "text-green-500" },
-                            { name: "Supabase", icon: "⚡", color: "text-emerald-400" },
-                            { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
-                            { name: "MongoDB", icon: "🍃", color: "text-green-400" },
                             { name: "PHP", icon: "🐘", color: "text-indigo-400" },
                             { name: "Kotlin", icon: "K", color: "text-purple-400" },
-                            { name: "Docker", icon: "🐳", color: "text-blue-500" },
+                            { name: "JavaScript", icon: "JS", color: "text-yellow-400" },
+                            { name: "TypeScript", icon: "TS", color: "text-blue-500" },
                             { name: "Java", icon: "☕", color: "text-red-400" },
-                            { name: "Python", icon: "🐍", color: "text-yellow-300" },
+                            { name: "Spring Boot", icon: "🍃", color: "text-green-500" },
+                            { name: "PostgreSQL", icon: "🐘", color: "text-blue-300" },
                         ].map((skill, i) => (
                             <div key={`dup-${i}`} className="group relative">
-                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-cyber-green/50 transition-all duration-300 hover:scale-110 cursor-pointer buraq-glow min-w-[160px] justify-center bg-black/40">
-                                    <span className={`text-2xl ${skill.color} drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]`}>{skill.icon}</span>
-                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors shadow-black drop-shadow-md">{skill.name}</span>
+                                <div className="flex items-center gap-3 px-6 py-3 glassmorphism border border-white/10 rounded-full hover:border-violet-500/50 transition-all duration-300 hover:scale-110 cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.1)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] min-w-[160px] justify-center bg-black/40">
+                                    <span className={`text-2xl ${skill.color}`}>{skill.icon}</span>
+                                    <span className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">{skill.name}</span>
                                 </div>
                             </div>
                         ))}

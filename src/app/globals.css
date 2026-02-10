@@ -41,15 +41,6 @@ html {
   animation: scroll-left 30s linear infinite;
 }
 
-.bg-stars {
-  background-image:
-    radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 3px),
-    radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 2px),
-    radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 3px);
-  background-size: 550px 550px, 350px 350px, 250px 250px;
-  background-position: 0 0, 40px 60px, 130px 270px;
-}
-
 @keyframes glitch {
   0% {
     transform: translate(0);

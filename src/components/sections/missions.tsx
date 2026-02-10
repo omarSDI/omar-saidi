@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 const projects = [
     {
         title: "Tunis Shoes",
-        desc: "Next-Gen E-Commerce with Real-Time Admin Dashboard & Analytics.",
-        tech: ["Spring Boot 3", "Angular 17", "PostgreSQL", "Docker"],
+        desc: "Next-Gen E-Commerce with Real-Time Admin Dashboard.",
+        tech: ["Spring Boot 3", "Angular", "PostgreSQL"],
         status: "OPERATIONAL",
-        ref: "TS-ECOSYSTEM-V1"
+        ref: "TS-ECOSYSTEM"
     },
     {
         title: "Platforme de Troc",
