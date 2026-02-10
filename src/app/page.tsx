@@ -19,6 +19,12 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto space-y-32 pb-40 pt-10 px-4">
 
+
+        {/* Featured Mission (Tunis Shoes) */}
+        <section id="featured-mission">
+          <FeaturedMission />
+        </section>
+
         {/* INTEGRATED ARCHIVE VAULT */}
         <section id="archive-vault" className="max-w-4xl mx-auto px-4">
           <div className="mb-12 text-center md:text-left">
