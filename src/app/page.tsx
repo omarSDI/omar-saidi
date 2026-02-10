@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Hero } from "@/components/sections/hero";
 import { SkillsDashboard } from "@/components/sections/skills-dashboard";
+import { FeaturedMission } from "@/components/sections/featured-mission";
 import { Terminal } from "@/components/ui/terminal";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import { Contact } from "@/components/sections/contact";
