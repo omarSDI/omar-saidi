@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabaseClient";
-import { cn } from "@/lib/utils";
+import { IconMail, IconPhone, IconMapPin, IconSend } from "@tabler/icons-react";
 
 export const Contact = () => {
     const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -36,97 +36,103 @@ export const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 px-4 relative">
-            <div className="max-w-4xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-[10px] font-mono text-cyber-green mb-4 uppercase tracking-[0.5em]">DIRECT_COMM_CHANNEL</h2>
-                    <h2 className="text-3xl md:text-5xl font-bold font-mono tracking-tighter uppercase">
-                        SEND A <span className="text-neutral-500">SIGNAL</span>
+        <section id="contact" className="py-24 bg-black relative border-t border-white/5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                {/* Section Header */}
+                <div className="mb-16">
+                    <span className="text-cyber-green text-sm font-mono tracking-widest uppercase">04. Contact</span>
+                    <h2 className="text-4xl md:text-5xl font-bold mt-2">
+                        Me <span className="text-neutral-500">Contacter</span>
                     </h2>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1 }}
-                    className="relative group"
-                >
-                    <div className="absolute -inset-1 bg-gradient-to-r from-cyber-green/20 to-electric-blue/20 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-
-                    <form
-                        onSubmit={handleSubmit}
-                        className="relative glassmorphism backdrop-blur-[20px] border border-white/5 p-8 md:p-12 rounded-xl space-y-6 buraq-glow"
+                <div className="grid lg:grid-cols-2 gap-16">
+                    {/* Left: Contact Info */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-8"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <h3 className="text-2xl font-bold">Discutons de votre projet</h3>
+                        <p className="text-neutral-400 leading-relaxed">
+                            Disponible pour des opportunités en freelance ou des postes de développement. N'hésitez pas à m'envoyer un message !
+                        </p>
+                        
+                        <div className="space-y-6 pt-4">
+                            <div className="flex items-center gap-4 text-neutral-300 bg-white/5 p-4 rounded-xl border border-white/5">
+                                <IconMail className="w-6 h-6 text-cyber-green" />
+                                <span>saidiiomar.it@gmail.com</span>
+                            </div>
+                            <div className="flex items-center gap-4 text-neutral-300 bg-white/5 p-4 rounded-xl border border-white/5">
+                                <IconPhone className="w-6 h-6 text-cyber-green" />
+                                <span>+216 27 566 936</span>
+                            </div>
+                            <div className="flex items-center gap-4 text-neutral-300 bg-white/5 p-4 rounded-xl border border-white/5">
+                                <IconMapPin className="w-6 h-6 text-cyber-green" />
+                                <span>Béja, Tunisie 9023</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right: Contact Form */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <form onSubmit={handleSubmit} className="bg-[#0a0a0a] border border-white/10 p-8 rounded-2xl space-y-6">
                             <div className="space-y-2">
-                                <label className="text-[10px] uppercase font-mono text-neutral-500 tracking-widest pl-1">Name_Identifier</label>
                                 <input
                                     required
                                     type="text"
-                                    placeholder="OMAR SAIDI"
+                                    placeholder="Votre Nom"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm font-mono text-white placeholder:text-neutral-700 focus:outline-none focus:border-cyber-green/50 transition-colors"
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-cyber-green/50 transition-colors"
                                 />
                             </div>
+                            
                             <div className="space-y-2">
-                                <label className="text-[10px] uppercase font-mono text-neutral-500 tracking-widest pl-1">Email_Coordinates</label>
                                 <input
                                     required
                                     type="email"
-                                    placeholder="SAIDI@IMPACT.COM"
+                                    placeholder="Votre Email"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm font-mono text-white placeholder:text-neutral-700 focus:outline-none focus:border-cyber-green/50 transition-colors"
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-cyber-green/50 transition-colors"
                                 />
                             </div>
-                        </div>
 
-                        <div className="space-y-2">
-                            <label className="text-[10px] uppercase font-mono text-neutral-500 tracking-widest pl-1">Message_Payload</label>
-                            <textarea
-                                required
-                                rows={5}
-                                placeholder="BUILDING TO IMPACT..."
-                                value={formData.message}
-                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm font-mono text-white placeholder:text-neutral-700 focus:outline-none focus:border-cyber-green/50 transition-colors resize-none"
-                            />
-                        </div>
+                            <div className="space-y-2">
+                                <textarea
+                                    required
+                                    rows={5}
+                                    placeholder="Votre Message"
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-cyber-green/50 transition-colors resize-none"
+                                />
+                            </div>
 
-                        <button
-                            disabled={status === "sending"}
-                            className={cn(
-                                "w-full py-4 rounded font-mono text-xs uppercase tracking-[0.3em] font-bold transition-all duration-500 shadow-[0_0_20px_rgba(0,255,65,0.1)] hover:shadow-[0_0_30px_rgba(0,255,65,0.3)]",
-                                status === "success" ? "bg-cyber-green text-black" : "bg-white/5 border border-white/10 text-white hover:bg-cyber-green hover:text-black"
-                            )}
-                        >
-                            {status === "idle" && "Execute_Transmission"}
-                            {status === "sending" && "Transmitting..."}
-                            {status === "success" && "Signal_Delivered_//_Success"}
-                            {status === "error" && (!supabase ? "Config_Missing_//_.env.local" : "Transmission_Failed")}
-                        </button>
-
-                        {/* Status Message Overlay */}
-                        {status === "success" && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="absolute -bottom-16 left-0 right-0 text-center"
+                            <button
+                                disabled={status === "sending"}
+                                className={`w-full py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-all ${
+                                    status === "success" 
+                                        ? "bg-cyber-green text-black" 
+                                        : "bg-white text-black hover:bg-neutral-200"
+                                }`}
                             >
-                                <span className="text-cyber-green font-mono text-[10px] animate-pulse">
-                                    /// MESSAGE TRANSMITTED SUCCESSFULLY ///
-                                </span>
-                            </motion.div>
-                        )}
-                    </form>
-                </motion.div>
+                                {status === "idle" && <><IconSend className="w-5 h-5"/> Envoyer le message</>}
+                                {status === "sending" && "Envoi en cours..."}
+                                {status === "success" && "Message envoyé !"}
+                                {status === "error" && (!supabase ? "Erreur : Supabase non configuré" : "Erreur d'envoi")}
+                            </button>
+                        </form>
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

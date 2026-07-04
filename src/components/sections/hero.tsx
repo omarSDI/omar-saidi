@@ -4,96 +4,119 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { IconArrowDown, IconBriefcase } from "@tabler/icons-react";
 
 export const Hero = () => {
     const words = [
-        { text: "OMAR" },
-        { text: "SAIDI" },
-        { text: "|" },
-        { text: "BUILDING", className: "text-cyber-green" },
-        { text: "SCALABLE", className: "text-cyber-green" },
-        { text: "SOLUTIONS", className: "text-cyber-green" },
+        { text: "Développeur", className: "text-white" },
+        { text: "Full-Stack", className: "text-cyber-green" },
     ];
 
     return (
-        <section className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-black py-20">
+        <section id="home" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-black pt-20">
             <BackgroundBeams />
-            <div className="z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
+            
+            <div className="z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                {/* Left Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col items-start space-y-6"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyber-green/10 border border-cyber-green/30 text-cyber-green text-xs font-semibold tracking-wide uppercase">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-green opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-green"></span>
+                        </span>
+                        Disponible pour missions
+                    </div>
+
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter">
+                        <span className="block text-white">OMAR</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-electric-blue">
+                            SAIDI
+                        </span>
+                    </h1>
+
+                    <div className="text-2xl sm:text-3xl font-medium text-neutral-300 flex items-center gap-3">
+                        <span>Je suis</span>
+                        <TypewriterEffect words={words} className="text-2xl sm:text-3xl font-bold font-mono text-left" cursorClassName="h-6 sm:h-8" />
+                    </div>
+
+                    <p className="text-neutral-400 text-lg max-w-lg leading-relaxed">
+                        Diplômé en Licence en Développement des Systèmes d'Informations (ISET Béja). Spécialisé dans la création d'architectures robustes, d'applications web modernes et de systèmes back-end performants.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-4 pt-4">
+                        <Link href="#portfolio" className="px-8 py-3.5 bg-white text-black font-semibold rounded-full hover:bg-neutral-200 transition-colors shadow-lg shadow-white/10">
+                            Voir mes projets
+                        </Link>
+                        <Link href="#contact" className="px-8 py-3.5 bg-transparent text-white border border-white/20 font-semibold rounded-full hover:bg-white/5 transition-colors">
+                            Me contacter
+                        </Link>
+                    </div>
+                </motion.div>
+
+                {/* Right Image */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative group mb-12"
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative mx-auto w-full max-w-md hidden md:block"
                 >
-                    <div className="absolute -inset-1 bg-gradient-to-r from-cyber-green/50 to-electric-blue/50 rounded-full blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/10 glassmorphism shadow-2xl flex items-center justify-center bg-neutral-900 group-hover:scale-105 transition-transform duration-500">
-                        {/* High-Impact Glass Overlay with Glitch Effect */}
-                        <motion.div
-                            animate={{
-                                opacity: [0.05, 0.15, 0.05],
-                                x: [0, -2, 2, 0]
-                            }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                            className="absolute inset-0 z-10 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"
-                        />
-
-                        {/* Static Glitch Blur */}
-                        <div className="absolute bottom-0 left-0 right-0 h-4 bg-cyber-green/20 blur-md z-20 group-hover:h-8 transition-all opacity-50" />
-
-                        <motion.div
-                            initial={{ filter: "grayscale(100%)" }}
-                            whileInView={{ filter: "grayscale(0%)" }}
-                            transition={{ duration: 1.5 }}
-                            viewport={{ once: true }}
-                            className="relative w-full h-full"
+                    <div className="relative aspect-square rounded-full">
+                        {/* Glowing Background */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-cyber-green/30 to-electric-blue/30 rounded-full blur-3xl opacity-50 animate-pulse" />
+                        
+                        {/* Badges */}
+                        <motion.div 
+                            animate={{ y: [0, -10, 0] }} 
+                            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                            className="absolute top-10 -left-6 z-20 bg-black border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-xl backdrop-blur-md"
                         >
+                            <div className="p-2 bg-yellow-500/20 text-yellow-500 rounded-lg"><IconBriefcase className="w-5 h-5" /></div>
+                            <div>
+                                <p className="text-xs text-neutral-400">Expérience</p>
+                                <p className="text-sm font-bold text-white">Full Stack</p>
+                            </div>
+                        </motion.div>
+
+                        {/* Profile Image Container */}
+                        <div className="relative w-full h-full rounded-full border-2 border-white/10 overflow-hidden bg-neutral-900 z-10">
                             <Image
                                 src="/assets/omar.jpg"
-                                alt="Omar Saidi"
+                                alt="Omar Saidi Profile"
                                 fill
-                                className="object-cover relative z-0"
+                                className="object-cover"
                                 priority
                                 onError={(e) => {
                                     const target = e.target as any;
                                     target.style.display = 'none';
-                                    target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full bg-charcoal text-cyber-green font-mono text-4xl font-bold">OS</div>';
+                                    target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full bg-neutral-900 text-cyber-green font-mono text-6xl font-bold">OS</div>';
                                 }}
                             />
-                        </motion.div>
+                        </div>
                     </div>
-                    {/* Floating Orbits */}
-                    <div className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-cyber-green/20 blur-xl animate-pulse" />
-                    <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-electric-blue/20 blur-xl animate-pulse" />
                 </motion.div>
+            </div>
 
-                <TypewriterEffect words={words} className="mb-6 tracking-tighter" />
-                <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto font-mono uppercase tracking-[0.2em] leading-relaxed mb-10"
-                >
-                    Elite Full Stack Developer & IT Specialist. <br />
-                    <span className="text-white/50">ISET Béja // Secure Archive</span>
-                </motion.p>
-
+            {/* Scroll Indicator */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-mono">Scroll</span>
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.5 }}
-                    className="flex items-center gap-8"
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                    <div className="h-[1px] w-12 bg-white/10" />
-                    <span className="text-[10px] text-neutral-600 uppercase tracking-[0.5em] font-mono">Status: Connected</span>
-                    <div className="h-[1px] w-12 bg-white/10" />
+                    <IconArrowDown className="w-4 h-4 text-neutral-500" />
                 </motion.div>
-            </div>
-
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-neutral-600 rounded-full flex justify-center p-1">
-                    <div className="w-1 h-2 bg-neutral-600 rounded-full" />
-                </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

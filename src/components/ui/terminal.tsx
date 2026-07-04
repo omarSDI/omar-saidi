@@ -27,7 +27,7 @@ const COMMANDS: { [key: string]: string | React.ReactNode } = {
     ),
     contact: (
         <div className="flex flex-col gap-1 py-1">
-            <a href="mailto:saidiomar537@gmail.com" className="text-cyber-green hover:text-white transition-colors glow-text underline decoration-cyber-green/30 tracking-widest">[ EMAIL_SECURE ] saidiomar537@gmail.com</a>
+            <a href="mailto:saidiiomar.it@gmail.com" className="text-cyber-green hover:text-white transition-colors glow-text underline decoration-cyber-green/30 tracking-widest">[ EMAIL_SECURE ] saidiiomar.it@gmail.com</a>
             <div className="flex gap-4">
                 <a href="https://linkedin.com/in/omar-saidi-9306283a0/" target="_blank" className="text-electric-blue hover:text-white transition-all underline decoration-electric-blue/30">[ LINKED_IN ]</a>
                 <a href="https://github.com/omarSDI" target="_blank" className="text-neutral-500 hover:text-white transition-all underline decoration-white/10">[ GIT_HUB ]</a>
