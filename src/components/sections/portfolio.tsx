@@ -12,7 +12,7 @@ const PROJECTS = [
         tag: "AI_SaaS_Platform",
         desc: "An advanced AI-powered platform generating highly optimized, ATS-friendly CVs tailored to specific job offers using RAG and intelligent analysis.",
         tech: ["Next.js", "FastAPI", "Gemini API", "ChromaDB"],
-        link: "#live-demo"
+        link: "https://lancyai.vercel.app/"
     },
     {
         id: "gestion-formation",

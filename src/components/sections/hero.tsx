@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { IconArrowDown, IconBriefcase } from "@tabler/icons-react";
+import { Marquee } from "@/components/ui/marquee";
 
 export const Hero = () => {
     const words = [
@@ -14,10 +15,10 @@ export const Hero = () => {
     ];
 
     return (
-        <section id="home" className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-black pt-20">
+        <section id="home" className="min-h-screen w-full flex flex-col items-center justify-between relative overflow-hidden bg-black pt-32 pb-0">
             <BackgroundBeams />
             
-            <div className="z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div className="z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center flex-1">
                 {/* Left Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -102,21 +103,9 @@ export const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-            >
-                <span className="text-[10px] text-neutral-500 uppercase tracking-widest font-mono">Scroll</span>
-                <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                    <IconArrowDown className="w-4 h-4 text-neutral-500" />
-                </motion.div>
-            </motion.div>
+            <div className="w-full mt-12 z-20">
+                <Marquee />
+            </div>
         </section>
     );
 };
