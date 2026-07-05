@@ -65,7 +65,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative mx-auto w-full max-w-md hidden md:block"
+                    className="relative mx-auto w-64 sm:w-80 md:w-full md:max-w-md mt-8 md:mt-0"
                 >
                     <div className="relative aspect-square rounded-full">
                         {/* Glowing Background */}
