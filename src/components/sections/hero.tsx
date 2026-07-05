@@ -34,16 +34,16 @@ export const Hero = () => {
                         Disponible pour missions
                     </div>
 
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter">
+                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter">
                         <span className="block text-white">OMAR</span>
                         <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-electric-blue">
                             SAIDI
                         </span>
                     </h1>
 
-                    <div className="text-2xl sm:text-3xl font-medium text-neutral-300 flex items-center gap-3">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-300 flex flex-wrap items-center gap-2 sm:gap-3">
                         <span>Je suis</span>
-                        <TypewriterEffect words={words} className="text-2xl sm:text-3xl font-bold font-mono text-left" cursorClassName="h-6 sm:h-8" />
+                        <TypewriterEffect words={words} className="text-xl sm:text-2xl md:text-3xl font-bold font-mono text-left" cursorClassName="h-5 sm:h-6 md:h-8" />
                     </div>
 
                     <p className="text-neutral-400 text-lg max-w-lg leading-relaxed">
